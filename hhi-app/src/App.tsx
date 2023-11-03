@@ -1,4 +1,3 @@
-"use client";
 
 import "leaflet/dist/leaflet.css";
 
@@ -13,6 +12,7 @@ const customIcon = L.icon({
   iconUrl: "marker.svg",
   iconSize: [32, 32],
 });
+
 
 export default function App() {
   return (

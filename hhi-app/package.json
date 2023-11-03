@@ -10,6 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/gapi": "0.0.45",
+    "@types/gapi.client.sheets": "^4.0.20201031",
+    "@types/google.accounts": "0.0.12",
+    "apis": "^0.1.2",
+    "google": "^2.1.0",
+    "google-one-tap": "^1.0.6",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
