@@ -7,8 +7,6 @@ const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
 const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
-
-let tokenClient;
 let gapiInited = false;
 let gisInited = false;
 
@@ -47,7 +45,7 @@ function gapiLoaded() {
   }
 
   function gisLoaded() {
-    tokenClient = google.accounts.oauth2.initTokenClient({
+     google.accounts.oauth2.initTokenClient({
       client_id : CLIENT_ID === undefined ? "" : CLIENT_ID ,
       scope: SCOPES,
       callback: ()=>{}, // defined later
