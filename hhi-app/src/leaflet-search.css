@@ -11,8 +11,8 @@
 	border-radius: 4px;
 	background-color: rgba(255, 255, 255, 0.8);
 	z-index:1000;	
-	margin-left: 10px;
-	margin-top: 10px;
+	margin-left: 1rem !important;
+	margin-top: 8rem !important;
 }
 .leaflet-control-search.search-exp {/*expanded*/
 	background: #fff;

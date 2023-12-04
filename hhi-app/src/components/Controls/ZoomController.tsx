@@ -1,10 +1,6 @@
-import { useMap } from "react-leaflet";
 import "leaflet-search";
 
-
-
-
-
+import { useMap } from "react-leaflet";
 
 interface ZoomControllerProps {
   zoomInTitle?: string;
@@ -19,7 +15,7 @@ function ZoomController(props: ZoomControllerProps) {
   const map = useMap();
 
   return (
-    <div className="leaflet-control leaflet-bar absolute right-4 bottom-5 z-[1000]">
+    <div className="leaflet-control leaflet-bar absolute left-4 top-4 z-[1000]">
       <a
         className="leaflet-control-zoom-in"
         title={zoomInTitle}
