@@ -83,9 +83,12 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         stakeholder={selectedStakeholder}
         onClose={() => setSelectedStakeholder(null)}
       />
-      <MarkerSearchBar />
-
-      <ZoomController zoomLevel={3} />
+      {!selectedStakeholder && (
+        <>
+          <MarkerSearchBar />
+          <ZoomController zoomLevel={3} />
+        </>
+      )}
     </MapContainer>
   );
 };

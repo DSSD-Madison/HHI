@@ -34,7 +34,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative h-full">
-      <div className="absolute top-0 left-0 right-0 z-[1000] flex justify-end p-5 header-drop">
+      <div className="absolute bottom-0 left-0 right-0 z-[1000] flex justify-end p-5">
         <img
           src="att-logo.png"
           alt="Harvard Logo"
