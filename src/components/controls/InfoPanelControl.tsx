@@ -1,16 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
-import { useMap} from 'react-leaflet'
+import { useMap } from 'react-leaflet'
 import { Stakeholder } from 'types'
 import ExternalLinkSvg from 'assets/external_link.svg'
 
 interface InfoPanelControlProps {
   stakeholder: Stakeholder | null
   onClose: () => void
-  onClick: (e:React.MouseEvent<HTMLDivElement>) => void
+  onClick: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
-const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClose, onClick }) => {
+const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClose }) => {
   const map = useMap()
 
   const disableZoom = () => {
@@ -29,18 +28,18 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
   }
 
   const driveFileId = stakeholder?.logo ? extractDriveFileId(stakeholder.logo) : null
-  if(window.innerWidth < 1280 && stakeholder){
-    map.dragging.disable();
+  if (window.innerWidth < 1280 && stakeholder) {
+    map.dragging.disable()
   }
-  const newClose = function(){
-    if(window.innerWidth < 1280){
-      map.dragging.enable();
+  const newClose = function () {
+    if (window.innerWidth < 1280) {
+      map.dragging.enable()
     }
-    onClose();
+    onClose()
   }
   return (
     <div
-      key={"overlay"}
+      key={'overlay'}
       className={`${
         stakeholder ? 'w-[100%] xl:w-[400px]' : 'w-0'
       } duration-400 fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 !font-metropolis shadow-md transition-all duration-100`}
@@ -49,7 +48,10 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
     >
       {stakeholder && (
         <>
-          <span className="absolute w-4 h-4 text-2xl leading-4 text-center transition ease-in-out delay-75 cursor-pointer right-6 top-6 text-black-900 hover:scale-125" onClick={newClose}>
+          <span
+            className="absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl leading-4 text-black-900 transition delay-75 ease-in-out hover:scale-125"
+            onClick={newClose}
+          >
             &times;
           </span>
 
@@ -69,16 +71,22 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
                 </span>
               </span>
             </div>
-            {driveFileId && <img className="mx-auto mb-5 w-80" src={`https://drive.google.com/thumbnail?id=${driveFileId}&sz=w1000`} alt={`${stakeholder.name} logo`} />}
+            {driveFileId && (
+              <img
+                className="mx-auto mb-5 w-80"
+                src={`https://drive.google.com/thumbnail?id=${driveFileId}&sz=w1000`}
+                alt={`${stakeholder.name} logo`}
+              />
+            )}
             <div className="mb-6 text-sm text-black-800">{stakeholder.description}</div>
             <div className="mb-4 font-bold text-black-800">
               HEADQUARTERS: <span className="text-sm font-normal">{stakeholder.headquarter}</span>
             </div>
             <div className="mb-4">
               <span className="font-bold text-black-800">LOCATIONS SERVED:</span>
-              <div className="mt-2 ml-2">
+              <div className="ml-2 mt-2">
                 {stakeholder.locationsServed?.map((location) => (
-                  <span key={location} className="inline-block px-3 py-1 mb-2 mr-2 font-semibold rounded-full bg-black-100 text-black-700">
+                  <span key={location} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
                     {location}
                   </span>
                 ))}
@@ -89,9 +97,9 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
             </div>
             <div className="mb-4">
               <span className="font-bold text-black-800">TAGS:</span>
-              <div className="mt-2 ml-2">
+              <div className="ml-2 mt-2">
                 {stakeholder.tags?.map((tag) => (
-                  <span key={tag} className="inline-block px-3 py-1 mb-2 mr-2 font-semibold rounded-full bg-black-100 text-black-700">
+                  <span key={tag} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
                     {tag}
                   </span>
                 ))}
